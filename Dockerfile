@@ -26,7 +26,7 @@ WORKDIR /app
 # EXPOSE 8080
 
 # Copia o arquivo JAR do estágio de construção para a etapa de produção
-COPY --from=build /app/target/todolist-0.0.1.jar app.jar
+COPY --from=build /app/target/todolist-1.0.0.jar app.jar
 
 # Define o comando de entrada
 ENTRYPOINT ["java", "-jar", "app.jar"]
