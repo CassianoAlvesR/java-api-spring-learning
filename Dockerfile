@@ -1,17 +1,32 @@
+# Etapa de construção (Build)
 FROM ubuntu:latest AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+# Atualiza o sistema e instala o OpenJDK 17
+RUN apt-get update && apt-get install -y openjdk-17-jdk
 
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia os arquivos do projeto para o diretório de trabalho
 COPY . .
 
-RUN apt-get install maven -y
+# Instala o Maven
+RUN apt-get install -y maven
+
+# Executa o comando Maven para construir o projeto
 RUN mvn clean install
 
+# Etapa de produção
 FROM openjdk:17-jdk-slim
 
-EXPOSE 8080
+# Define o diretório de trabalho
+WORKDIR /app
 
-COPY --from=build /target/todolist-1.0.0.jar app.jar
+# Expõe a porta 8080, se necessário
+# EXPOSE 8080
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+# Copia o arquivo JAR do estágio de construção para a etapa de produção
+COPY --from=build /app/target/todolist-1.0.0.jar app.jar
+
+# Define o comando de entrada
+ENTRYPOINT ["java", "-jar", "app.jar"]
