@@ -1,0 +1,11 @@
+br\com\ccassoft\todolist\task\TaskController.class
+br\com\ccassoft\todolist\utils\Utils.class
+br\com\ccassoft\todolist\user\IUserRepository.class
+br\com\errors\ExceptionHandlerController.class
+br\com\ccassoft\todolist\filter\FilterTaskAuth.class
+br\com\ccassoft\todolist\task\TaskModel.class
+br\com\ccassoft\todolist\user\UserController.class
+br\com\ccassoft\todolist\TodolistApplication.class
+br\com\ccassoft\todolist\user\create.class
+br\com\ccassoft\todolist\task\ITaskRepository.class
+br\com\ccassoft\todolist\user\UserModel.class
